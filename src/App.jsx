@@ -83,12 +83,12 @@ const ControlPanel = ({
   onGeneratePDF,
 }) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex flex-wrap gap-4 justify-between items-center bg-white p-4 rounded-lg shadow-sm">
-        <div className="space-x-3">
+        <div className="space-x-6 space-y-2">
           <button
             onClick={onAddNode}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
+            className="px-4 py-2 bg-blue-600 mx-6 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
             disabled={maxNodes}
           >
             Add Node
@@ -113,7 +113,7 @@ const ControlPanel = ({
             onClick={onReset}
             className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors flex items-center gap-2"
           >
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="w-6 h-4" />
             <span>Reset</span>
           </button>
         </div>
@@ -390,6 +390,12 @@ const BellmanFordVisualizer = () => {
     setMessage('');
     setCurrentAction('');
   };
+
+  const handleinput = (index, e) => {
+    
+    console.log(index);
+  };
+
   const handleMouseDown = (index, e) => {
     const timer = setTimeout(() => {
       setDraggingNode(index);
@@ -489,8 +495,9 @@ const BellmanFordVisualizer = () => {
         <div className="relative bg-white p-6 rounded-xl shadow-md">
           <svg width="100%" height="600" className="max-w-full" viewBox="0 0 400 400"   onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}>
+            
               
-            <defs>
+            <defs >
               <marker
                 id="arrowhead"
                 markerWidth="10"
@@ -517,8 +524,10 @@ const BellmanFordVisualizer = () => {
                   } transition-colors duration-300`}
                   strokeWidth={currentEdge === index ? 3 : 2}
                   markerEnd="url(#arrowhead)"
+                
                 />
                 <text
+                  
                   x={(edge.x1 + edge.x2) / 2}
                   y={(edge.y1 + edge.y2) / 2}
                   dy="-5"
